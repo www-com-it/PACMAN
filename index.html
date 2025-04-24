@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PACMAN</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="overlay"></div>
+
+    <div id="vinto" class="vittoria">
+        <video id="video" src="celebration.mp4" muted loop autoplay></video>
+        <h1>CONGRATULAZIONI <br>
+        HAI VINTO!</h1>
+        <button onclick="reset()">TORNA AL MENU DI GIOCO</button>
+    </div>
+
+    <div id="inizio" class="difficolta">
+        <p class="mobile">Usa <span style="color: red;">WASD</span> per muoverti e fare 1000 punti! <br>
+            (e occhio al timer ;)</p>
+        <div class="container">
+            <p>SCEGLI LA DIFFICOLTÀ <br>
+                (cambierà il tempo che hai a disposizione per terminare il gioco)</p>
+                <div class="buttons">
+                    <button id="fac" onclick="facile()">FACILE</button>
+                    <button id="med" onclick="medio()">MEDIA</button>
+                    <button id="dif" onclick="difficile()">DIFFICILE</button>
+                </div>
+            <p id="telefono">(Su mobile avrai <br> sempre 1:30 minuti).</p>
+        </div>
+        <div class="skin">
+            <p>Scegli la tua skin:</p>
+            <div class="first">
+                <button onclick="pacmanbg()">PACMAN <br> (facile)</button>
+                <button onclick="carmine()">CARMINE <br> (medio)</button>
+            </div>
+            <div class="second">
+                <button onclick="ciccio()">PARENTELA <br> (medio)</button>
+                <button onclick="rossano()">ROSSANO<br> (difficile)</button>
+            </div> 
+        </div>
+    </div>
+
+    <div class="up">
+        <div class="punteggio">
+            <p>Punteggio:</p>
+            <p id="punti">0</p>
+        </div>
+        <div class="timer">
+            <p id="timer"></p>
+        </div>
+    </div>
+    
+    <div class="istruzioni">
+        <p>Benvenuti al gioco web di pacman!</p>
+        <p>Usa <span style="color: red;">WASD</span> per muoverti e fare 1000 punti! <br>
+        (e occhio al timer ;)</p>
+        <button onclick="reset()">RESET</button>
+    </div>
+
+    <div id="pacman"></div>
+    <div id="oggetto"></div>
+
+    <div class="move">
+        <div class="first">
+            <button id="btn-up" onclick="up()">↑</button>
+            <button id="btn-down" onclick="down()">↓</button>
+        </div>
+        <div class="second">
+            <button id="btn-left" onclick="left()">←</button>
+            <button id="btn-right" onclick="right()">→</button>
+        </div>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,796 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Press+Start+2P&family=Rubik:ital,wght@0,300..900;1,300..900&family=Special+Gothic+Expanded+One&family=Zen+Dots&display=swap');
+
+@media (min-width: 1200px) {
+
+    body {
+        padding: 0;
+        margin: 0;
+        background-image: url(sfondo.jpg);
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        min-height: 100vh;
+        position: relative;
+        overflow: auto;
+        font-family: "Press Start 2P";
+        touch-action: manipulation;
+    }
+    
+    #overlay {
+        position: fixed;
+        top: 0; 
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 999999999999999999999999999999;
+        background: transparent;
+    }
+      
+    .difficolta {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        z-index: 999999;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        user-select: none;
+    }
+
+    .difficolta p {
+        font-size: 25px;
+        color: white;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .buttons button {
+        padding: 10px;
+        font-weight: 600;
+        font-size: 25px;
+        cursor: pointer;
+        border: none;
+        border-radius: 10px;
+        transition: all 0.2s ease;
+        color: white;
+    }
+
+    #fac {
+        background-color: green;
+    }
+
+    #med {
+        background-color: orange;
+    }
+
+    #dif {
+        background-color: red;
+    }
+
+    #fac:hover,
+    #med:hover,
+    #dif:hover {
+        transform: scale(1.1);
+    }
+    
+    .istruzioni {
+        position: absolute;
+        right: 50px;
+        top: 0;   
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center; 
+        width: 170px;
+        user-select: none;
+        z-index: 99;
+    }
+    
+    .up {
+        display: flex;
+        flex-direction: column;
+        z-index: 99;
+    }
+
+    .timer {
+        position: absolute;
+        top: 50px;
+        left: 44%;
+    }
+
+    #timer {
+        color: white;
+        font-size: 50px;
+    }
+
+    .punteggio {
+        display: flex;
+        gap: 20px;
+        position: absolute;
+        top: 0;
+        left: 32%;
+        user-select: none;
+    }
+    
+    .punteggio p {
+        color: yellow;
+        font-size: 40px;
+        user-select: none;
+    }
+    
+    .istruzioni p {
+        color: white;
+        font-size: 14px;
+        font-size: 500;
+    }
+    
+    .istruzioni button {
+        padding: 5px 0 5px 0;
+        font-size: 18px;
+        background-color: yellow;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .istruzioni button:hover {
+        background-color: rgb(177, 177, 0);
+    }
+
+    .istruzioni button:active {
+        background-color: yellow;
+    }
+    
+    #pacman {
+        position: absolute;
+        right: 50px;
+        bottom: 70px;
+        height: 110px;
+        width: 110px;
+        background-image: url(pacman-vero.png);
+        background-size: cover;
+        background-position: center;
+        user-select: none;
+    }
+    
+    #oggetto {
+        position: absolute;
+        left: 150px;
+        top: 300px;
+        height: 80px;
+        width: 80px;
+        background-image: url(nemico.png);
+        background-size: cover;
+        background-position: center;
+        transition: all 0.3s ease;
+        user-select: none;
+    }
+    
+    #oggetto.disappear {
+        transform: scale(0.1);
+        opacity: 0;
+    }
+
+    .vittoria { 
+        display: none;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        z-index: 999999999999999;
+    }
+
+    .vittoria button {
+        z-index: 999999999999999;
+        position: absolute;
+        top: 65%;
+        left: 40%;
+        padding: 10px;
+        font-size: 20px;
+        background-color: white;
+        border: none;
+        border-radius: 10px;
+        transition: 0.2s ease;
+        cursor: pointer;
+    }
+
+    .vittoria button:hover {
+        background-color: rgb(173, 173, 173);
+    }
+
+    .vittoria button:active {
+        background-color: white;
+    }
+
+    .vittoria h1 {
+        top: 40%;
+        left: 18%;
+        position: absolute;
+        color: white;
+        z-index: 999999999999999;
+        font-size: 53px;
+    }
+
+    .vittoria video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        transform: translate(-50%, -50%);
+        object-fit: cover;
+        z-index: 999999999999999;
+    }
+
+    .move {
+        display: none;
+    }
+
+    .mobile {
+        display: none;
+    }
+
+    #telefono {
+        display: none;
+    }
+
+    .skin {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .skin button {
+        padding: 10px;
+        font-size: 18px;
+        background-color: green;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 1199px) and (min-width: 451px) {
+    body {
+        padding: 0;
+        margin: 0;
+        background-image: url(sfondo.jpg);
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        position: relative;
+        overflow: auto;
+        font-family: "Press Start 2P";
+        touch-action: manipulation;
+    }
+
+    #overlay {
+        position: fixed;
+        top: 0; 
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 999999999999999999999999999999;
+        background: transparent;
+    }
+
+    .difficolta {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: fixed;
+        z-index: 999999;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        user-select: none;
+    }
+
+    .difficolta p {
+        font-size: 25px;
+        color: white;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .buttons button {
+        padding: 10px;
+        font-weight: 600;
+        font-size: 25px;
+        cursor: pointer;
+        border: none;
+        border-radius: 10px;
+        transition: all 0.2s ease;
+        color: white;
+    }
+
+    #fac {
+        background-color: green;
+    }
+
+    #med {
+        background-color: orange;
+    }
+
+    #dif {
+        background-color: red;
+    }
+
+    #fac:hover,
+    #med:hover,
+    #dif:hover {
+        transform: scale(1.1);
+    }
+    
+    .istruzioni {
+        position: absolute;
+        right: 20px;
+        top: 0;   
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center; 
+        width: 170px;
+        user-select: none;
+        z-index: 99;
+    }
+    
+    .punteggio {
+        display: flex;
+        gap: 20px;
+        position: absolute;
+        top: 0;
+        left: 20px;
+        user-select: none;
+    }
+    
+    .punteggio p {
+        color: yellow;
+        font-size: 40px;
+        user-select: none;
+    }
+
+    .up {
+        display: flex;
+        flex-direction: column;
+        z-index: 99;
+    }
+
+    .timer {
+        position: absolute;
+        top: 50px;
+        left: 20px;
+    }
+
+    #timer {
+        color: white;
+        font-size: 50px;
+    }
+    
+    .istruzioni p {
+        color: white;
+        font-size: 14px;
+    }
+    
+    .istruzioni button {
+        padding: 5px 0 5px 0;
+        font-size: 18px;
+        background-color: yellow;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .istruzioni button:hover {
+        background-color: rgb(177, 177, 0);
+    }
+
+    .istruzioni button:active {
+        background-color: yellow;
+    }
+    
+    #pacman {
+        position: absolute;
+        right: 50px;
+        bottom: 70px;
+        height: 110px;
+        width: 110px;
+        background-image: url(pacman-vero.png);
+        background-size: cover;
+        background-position: center;
+        user-select: none;
+    }
+    
+    #oggetto {
+        position: absolute;
+        left: 150px;
+        top: 300px;
+        height: 80px;
+        width: 80px;
+        background-image: url(nemico.png);
+        background-size: cover;
+        background-position: center;
+        transition: all 0.3s ease;
+        user-select: none;
+    }
+    
+    #oggetto.disappear {
+        opacity: 0;
+        transform: rotate(360deg) scale(1.1);
+    }
+
+    .vittoria { 
+        display: none;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        z-index: 999999999999999;
+    }
+
+    .vittoria button {
+        z-index: 999999999999999;
+        position: absolute;
+        top: 65%;
+        left: 36%;
+        padding: 10px;
+        font-size: 20px;
+        background-color: white;
+        border: none;
+        border-radius: 10px;
+        transition: 0.2s ease;
+        cursor: pointer;
+    }
+
+    .vittoria button:hover {
+        background-color: rgb(173, 173, 173);
+    }
+
+    .vittoria button:active {
+        background-color: white;
+    }
+
+    .vittoria h1 {
+        top: 40%;
+        left: 15%;
+        position: absolute;
+        color: white;
+        z-index: 999999999999999;
+        font-size: 40px;
+    }
+
+    .vittoria video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        transform: translate(-50%, -50%);
+        object-fit: cover;
+        z-index: 999999999999999;
+    }
+
+    .move {
+        display: none;
+    }
+
+    .mobile {
+        display: none;
+    }
+
+    #telefono {
+        display: none;
+    }
+
+    .skin {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .skin button {
+        padding: 10px;
+        font-size: 18px;
+        background-color: green;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 450px) {
+    body {
+        padding: 0;
+        margin: 0;
+        background-image: url(sfondo.jpg);
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100dvh;
+        position: relative;
+        overflow: auto;
+        font-family: "Press Start 2P";
+        touch-action: manipulation;
+    }
+
+    #overlay {
+        position: fixed;
+        top: 0; 
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 999999999999999999999999999999;
+        background: transparent;
+    }
+
+    .difficolta {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        position: fixed;
+        z-index: 99999999999999999999999;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        background-color: black;
+        user-select: none;
+    }
+
+    .difficolta p {
+        font-size: 16px;
+        color: white;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .buttons button {
+        padding: 10px;
+        font-weight: 600;
+        font-size: 20px;
+        cursor: pointer;
+        border: none;
+        border-radius: 10px;
+        transition: all 0.2s ease;
+        color: white;
+    }
+
+    #fac {
+        background-color: green;
+    }
+
+    #med {
+        background-color: orange;
+    }
+
+    #dif {
+        background-color: red;
+    }
+
+    #fac:hover,
+    #med:hover,
+    #dif:hover {
+        transform: scale(1.1);
+    }
+    
+    .istruzioni {
+       display: none;
+    }
+    
+    .punteggio {
+        display: flex;
+        gap: 20px;
+        position: absolute;
+        top: 0;
+        left: 20px;
+        user-select: none;
+    }
+    
+    .punteggio p {
+        color: yellow;
+        font-size: 27px;
+        user-select: none;
+    }
+
+    .up {
+        display: flex;
+        flex-direction: column;
+        z-index: 99;
+    }
+
+    .timer {
+        position: absolute;
+        top: 50px;
+        left: 20px;
+    }
+
+    #timer {
+        color: white;
+        font-size: 38px;
+    }
+    
+    #pacman {
+        position: absolute;
+        right: 50px;
+        bottom: 70px;
+        height: 110px;
+        width: 110px;
+        background-image: url(pacman-vero.png);
+        background-size: cover;
+        background-position: center;
+        user-select: none;
+    }
+    
+    #oggetto {
+        position: absolute;
+        left: 150px;
+        top: 300px;
+        height: 80px;
+        width: 80px;
+        background-image: url(nemico.png);
+        background-size: cover;
+        background-position: center;
+        transition: all 0.3s ease;
+        user-select: none;
+    }
+    
+    #oggetto.disappear {
+        opacity: 0;
+        transform: rotate(360deg) scale(1.1);
+    }
+
+    .vittoria { 
+        display: none;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        z-index: 999999999999999;
+    }
+
+    .vittoria button {
+        z-index: 999999999999999;
+        position: absolute;
+        top: 55%;
+        left: 18%;
+        padding: 10px;
+        font-size: 18px;
+        background-color: white;
+        border: none;
+        border-radius: 10px;
+        transition: 0.2s ease;
+        cursor: pointer;
+    }
+
+    .vittoria button:hover {
+        background-color: rgb(173, 173, 173);
+    }
+
+    .vittoria button:active {
+        background-color: white;
+    }
+
+    .vittoria h1 {
+        top: 40%;
+        left: 8%;
+        position: absolute;
+        color: white;
+        z-index: 999999999999999;
+        font-size: 22px;
+    }
+
+    .vittoria video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        transform: translate(-50%, -50%);
+        object-fit: cover;
+        z-index: 999999999999999;
+    }
+
+    .move {
+        position: absolute;
+        bottom: 110px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        z-index: 9;
+    }
+
+    .move button {
+        padding: 8px;
+        background-color: yellow;
+        border: none;
+        border-radius: 10px;
+        font-weight: 800;
+        font-size: 20px;
+    }
+
+    .move button:active {
+        background-color: rgb(163, 163, 0);
+    }
+
+    .first {
+        display: flex;
+        gap: 10px;
+    }
+
+    .second {
+        display: flex;
+        gap: 10px;
+    }
+
+    .mobile {
+        display: flex;
+        flex-direction: column;
+        width: 399px;
+        font-size: 11px;
+    }
+
+    .skin {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .skin button {
+        width: 50%;
+        padding: 8px;
+        font-size: 18px;
+        font-weight: 700;
+        background-color: green;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        cursor: pointer;
+    }
+}
